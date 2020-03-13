@@ -2,13 +2,12 @@ version: "3.3"
 
 services:
   wordpress:
-    image: wordpress:latest
+    image: deweiliu/blog:latest
+    build:
+      context: .
+      dockerfile: Dockerfile    
     ports:
       - "80:80"
-    restart: always
-    environment:
-      WORDPRESS_DB_HOST: 35.205.217.123
-      WORDPRESS_DB_USER: root
-      WORDPRESS_DB_PASSWORD: 0poLbcAnnBgLuuee
-      WORDPRESS_DB_NAME: mysql-271000:europe-west1:mysql-wordpress
+    #restart: always
+    container_name: blog-container
 

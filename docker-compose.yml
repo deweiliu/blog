@@ -8,6 +8,6 @@ services:
       dockerfile: Dockerfile    
     ports:
       - "80:80"
-    #restart: always
+    restart: always
     container_name: blog-container
 

@@ -2,12 +2,12 @@ version: "3.3"
 
 services:
   wordpress:
-    image: deweiliu/blog:latest
+    image: deweiliu/wordpress:latest
     build:
       context: .
       dockerfile: Dockerfile    
     ports:
       - "80:80"
     restart: always
-    container_name: blog-container
+    container_name: wordpress-container
 

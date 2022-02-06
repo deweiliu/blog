@@ -83,6 +83,15 @@ export class CdkStack extends Stack {
       memoryReservationMiB: 32,
       portMappings: [{ containerPort: 80, hostPort: get.hostPort, protocol: ecs.Protocol.TCP }],
       logging: new ecs.AwsLogDriver({ streamPrefix: get.appName }),
+      environment: { WORDPRESS_DB_HOST: ssm.StringParameter.valueForStringParameter(this, "/core/mysql/endpoint") },
+      secrets: {
+        WORDPRESS_DB_USER: ecs.Secret.fromSsmParameter(ssm.StringParameter.fromSecureStringParameterAttributes(this, 'DB_USERNAME',
+          { parameterName: '/blog/mysql/username' })),
+        WORDPRESS_DB_PASSWORD: ecs.Secret.fromSsmParameter(ssm.StringParameter.fromSecureStringParameterAttributes(this, 'DB_PASSWORD',
+          { parameterName: '/blog/mysql/password' })),
+        WORDPRESS_DB_NAME: ecs.Secret.fromSsmParameter(ssm.StringParameter.fromSecureStringParameterAttributes(this, 'DB_NAME',
+          { parameterName: '/blog/mysql/database' })),
+      },
     });
 
     const mountConfig: MountConfig[] = [

@@ -10,7 +10,7 @@ new CdkStack(app, 'Blog', {
   domain: 'dliu.com',
   dnsRecord: 'blog',
   appName: 'blog',
-  instanceCount: 1,
+  instanceCount: 2,
   tags: { service: 'blog' },
   /* If you don't specify 'env', this stack will be environment-agnostic.
    * Account/Region-dependent features and context lookups will not work,

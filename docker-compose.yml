@@ -1,17 +1,16 @@
 version: "3.8"
 
 services:
-  wordpress:
-    image: deweiliu/wordpress:latest
+  blog:
+    image: deweiliu/blog:latest
     build:
       context: ./src
       dockerfile: Dockerfile
       x-bake:
         platforms:
-          - linux/amd64
           - linux/arm64
     ports:
       - "80:80"
     restart: always
-    container_name: wordpress-container
+    container_name: blog-container
 

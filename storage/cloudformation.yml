@@ -1,0 +1,20 @@
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  FileSystem:
+    Type: AWS::EFS::FileSystem
+    Properties:
+      Encrypted: true
+      BackupPolicy:
+        Status: ENABLED
+      FileSystemTags:
+        - Key: Name
+          Value: blog
+Outputs:
+  FileSystemID:
+    Value: !Ref FileSystem
+    Export:
+      Name: Blog-EfsId
+  FileSystemArn:
+    Value: !GetAtt FileSystem.Arn
+    Export:
+      Name: Blog-EfsArn

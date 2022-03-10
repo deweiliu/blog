@@ -97,10 +97,9 @@ export class CdkStack extends Stack {
     const mountConfig: MountConfig[] = [
       { volumeName: "tmp", efsPath: "/tmp", containerPath: "/tmp" },
       { volumeName: "run", efsPath: "/run", containerPath: "/run" },
-      { volumeName: "uploads", efsPath: "/run", containerPath: "/usr/src/wordpress/wp-content/uploads" },
-      { volumeName: "custom-theme", efsPath: "/custom-theme", containerPath: "/usr/src/wordpress/wp-content/themes/custom-theme" },
-      { volumeName: "custom-plugin", efsPath: "/custom-plugin", containerPath: "/usr/src/wordpress/wp-content/plugins/custom-plugin" },
-
+      { volumeName: "uploads", efsPath: "/uploads", containerPath: "/usr/src/wordpress/wp-content/uploads" },
+      { volumeName: "theme", efsPath: "/themes", containerPath: "/usr/src/wordpress/wp-content/themes" },
+      { volumeName: "plugin", efsPath: "/plugins", containerPath: "/usr/src/wordpress/wp-content/plugins" },
     ];
 
     mountConfig.forEach(config => {

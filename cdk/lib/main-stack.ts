@@ -80,7 +80,7 @@ export class CdkStack extends Stack {
     const container = taskDefinition.addContainer('Container', {
       image: ecs.ContainerImage.fromRegistry(get.dockerImage),
       containerName: `${get.appName}-container`,
-      memoryReservationMiB: 32,
+      memoryReservationMiB: 100,
       portMappings: [{ containerPort: 80, hostPort: get.hostPort, protocol: ecs.Protocol.TCP }],
       logging: new ecs.AwsLogDriver({ streamPrefix: get.appName }),
       environment: { WORDPRESS_DB_HOST: ssm.StringParameter.valueForStringParameter(this, "/core/mysql/endpoint") },
